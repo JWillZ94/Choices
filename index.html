@@ -7,19 +7,26 @@
   <link rel="stylesheet" href="styles.css">
   <title>Choices</title>
 </head>
-<body>
+<body onload="start()">
   <p id="title">Choices</p>
   <p>What matters to you most as a leader?</p>
 
-  <div>
-    Card
-  </div>
+  <div id="card"></div>
 
   <div>
-    <button>Keep</button>
-    <button>Discard</button>
+    <button id="keep">Keep</button>
+    <button id="discard">Discard</button>
   </div>
-  
+
+  <button id="reset">Reset</button>
+
+  <div id="start-modal">
+    <div class="modal-content">
+      <img src="" alt="image here">
+      <button id="modal-btn">Play</button>
+    </div>
+  </div>
+
   <script src="main.js"></script>
 </body>
 </html>

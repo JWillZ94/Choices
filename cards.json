@@ -1,12 +1,182 @@
 [
   {
     "id": 1,
-    "card": "Analyical Thinking",
-    "img": "analytical-thinking.PNG",
-    "category": "technical",
-    "keep": null
+    "img": "./assets/analytical-thinking.PNG",
+    "category": "technical"
   },
   {
-    
+    "id": 2,
+    "img": "./assets/approachable.PNG",
+    "category": "social"
+  },
+  {
+    "id": 3,
+    "img": "./assets/awareness.PNG",
+    "category": "social"
+  },
+  {
+    "id": 4,
+    "img": "./assets/bridging.PNG",
+    "category": "social"
+  },
+  {
+    "id": 5,
+    "img": "./assets/brokering.PNG",
+    "category": "political"
+  },
+  {
+    "id": 6,
+    "img": "./assets/business-acumen.PNG",
+    "category": "technical"
+  },
+  {
+    "id": 7,
+    "img": "./assets/capacity.PNG",
+    "category": "technical"
+  },
+  {
+    "id": 8,
+    "img": "./assets/charm.PNG",
+    "category": "social"
+  },
+  {
+    "id": 9,
+    "img": "./assets/coaching.PNG",
+    "category": "social"
+  },
+  {
+    "id": 10,
+    "img": "./assets/connecting-dots.PNG",
+    "category": "technical"
+  },
+  {
+    "id": 11,
+    "img": "./assets/cooperate.PNG",
+    "category": "social"
+  },
+  {
+    "id": 12,
+    "img": "./assets/data.PNG",
+    "category": "technical"
+  },
+  {
+    "id": 13,
+    "img": "./assets/delegation.PNG",
+    "category": "political"
+  },
+  {
+    "id": 14,
+    "img": "./assets/design-thinking.PNG",
+    "category": "political"
+  },
+  {
+    "id": 15,
+    "img": "./assets/directing.PNG",
+    "category": "political"
+  },
+  {
+    "id": 16,
+    "img": "./assets/efficiency.PNG",
+    "category": "technical"
+  },
+  {
+    "id": 17,
+    "img": "./assets/expertise.PNG",
+    "category": "technical"
+  },
+  {
+    "id": 18,
+    "img": "./assets/feedback.PNG",
+    "category": "social"
+  },
+  {
+    "id": 19,
+    "img": "./assets/gravitas.PNG",
+    "category": "political"
+  },
+  {
+    "id": 20,
+    "img": "./assets/influence.PNG",
+    "category": "political"
+  },
+  {
+    "id": 21,
+    "img": "./assets/innovation.PNG",
+    "category": "technical"
+  },
+  {
+    "id": 22,
+    "img": "./assets/intuition.PNG",
+    "category": "social"
+  },
+  {
+    "id": 23,
+    "img": "./assets/mediation.PNG",
+    "category": "social"
+  },
+  {
+    "id": 24,
+    "img": "./assets/networking.PNG",
+    "category": "social"
+  },
+  {
+    "id": 25,
+    "img": "./assets/nuanced.PNG",
+    "category": "political"
+  },
+  {
+    "id": 26,
+    "img": "./assets/perceptive.PNG",
+    "category": "political"
+  },
+  {
+    "id": 27,
+    "img": "./assets/planning.PNG",
+    "category": "technical"
+  },
+  {
+    "id": 28,
+    "img": "./assets/positioning.PNG",
+    "category": "political"
+  },
+  {
+    "id": 29,
+    "img": "./assets/power.PNG",
+    "category": "political"
+  },
+  {
+    "id": 30,
+    "img": "./assets/process.PNG",
+    "category": "technical"
+  },
+  {
+    "id": 31,
+    "img": "./assets/project-management.PNG",
+    "category": "technical"
+  },
+  {
+    "id": 32,
+    "img": "./assets/savvy.PNG",
+    "category": "political"
+  },
+  {
+    "id": 33,
+    "img": "./assets/selling.PNG",
+    "category": "social"
+  },
+  {
+    "id": 34,
+    "img": "./assets/speed.PNG",
+    "category": "technical"
+  },
+  {
+    "id": 35,
+    "img": "./assets/standing.PNG",
+    "category": "political"
+  },
+  {
+    "id": 36,
+    "img": "./assets/teamwork.PNG",
+    "category": "social"
   }
 ]
