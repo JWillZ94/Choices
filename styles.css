@@ -1,5 +1,17 @@
 body {
   text-align: center;
+  background: #6666ff;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+#title {
+  font-size: 4em;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#question {
+  font-size: 1.5em;
 }
 
 #start-modal {
@@ -12,7 +24,7 @@ body {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
 }
 
 .modal-content {
@@ -20,5 +32,71 @@ body {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 15px;
+  width: 30%; /* Could be more or less, depending on screen size */
+}
+
+#list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#title-img {
+  border-radius: 15px;
+  display: block;
+  margin: auto;
+}
+
+#modal-btn {
+  margin: 1rem 0 0 0;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+#btns-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+#btns-container img {
+  margin: 1rem;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+#card {
+  width: 325px;
+  height: 325px;
+  margin: auto;
+  font-size: 1.3em;
+}
+
+#card img {
+  border-radius: 15px;
+}
+
+#card p {
+  position: relative;
+  right: 190px;
+  top: 100px;
+  width: 700px;
+  height: 100px;
+}
+
+#list li {
+  list-style-type: none;
+  margin-bottom: 30px;
+}
+
+#list img {
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#reset {
+  font-size: 1.1em;
+  cursor: pointer;
 }

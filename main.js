@@ -9,6 +9,7 @@ let modalBtn = document.getElementById('modal-btn');
 let keepBtn = document.getElementById('keep');
 let discardBtn = document.getElementById('discard');
 let resetBtn = document.getElementById('reset');
+let btnsContainer = document.getElementById('btns-container');
 let gameOn;
 let current;
 let cardsLeft;
@@ -20,6 +21,7 @@ let largest;
 let secondLargest;
 let thirdLargest;
 let discard = [];
+let i = 0;
 
 function start() {
   modal.style.display = "block";
@@ -27,31 +29,26 @@ function start() {
     modal.style.display = "none";
     gameOn = true;
 
+    btnsContainer.style.display = 'block';
+    currentCard.style.height = '325px';
+
     fetch('cards.json')
       .then(res => res.json())
       .then(cards => {
 
         shuffle(cards);
 
-        let i = 0;
+        i = 0;
 
         play();
-
-        //
-        // pick2(compareCategories[1]);
-        //
-        // pick1(compareCategories[2]);
-
-        // end();
 
         function play() {
           current = cards[i];
           currentCard.innerHTML = `
-            <img id="${current.id}" class="${current.category}" src="${current.img}">
+            <img id="${current.id}" class="${current.category}" src="${current.img}" width="325" height="325">
           `;
 
           keepBtn.addEventListener('click', function() {
-            console.log(i);
             if (i === cards.length - 1) {
               keepBtn.removeEventListener('click', function(){});
               discardBtn.removeEventListener('click', function(){});
@@ -90,7 +87,7 @@ function start() {
             i++;
             current = cards[i];
             currentCard.innerHTML = `
-              <img id="${current.id}" class="${current.category}" src="${current.img}">
+              <img id="${current.id}" class="${current.category}" src="${current.img}" width="325" height="325">
             `;
           }
 
@@ -99,14 +96,16 @@ function start() {
             i++;
             current = cards[i];
             currentCard.innerHTML = `
-              <img id="${current.id}" class="${current.category}" src="${current.img}">
+              <img id="${current.id}" class="${current.category}" src="${current.img}" width="325" height="325">
             `;
           }
 
         }
 
         function pick3(categoryArr) {
-          currentCard.innerHTML = "PICK 3 CARDS";
+          currentCard.style.height = '40px';
+          currentCard.innerHTML = "Choose 3 qualities.";
+          btnsContainer.style.display = 'none';
           var threeCards = [];
           categoryArr.map(i => {
             list.innerHTML += `
@@ -116,25 +115,26 @@ function start() {
             `;
           });
 
-          let pick3Arr = document.getElementsByTagName("img");
+          let pick3Arr = document.getElementsByTagName("li");
           for (let card of pick3Arr) {
             card.addEventListener('click', function(e) {
-              choose3Cards(e);
               if (threeCards.length === 3) {
                 card.removeEventListener('click', function(){});
                 pick2(compareCategories[1], categoryArr);
               }
+              choose3Cards(e, card);
             });
           }
 
-          function choose3Cards(e) {
+          function choose3Cards(e, card) {
             threeCards.push(e.target.id);
+            card.parentNode.removeChild(card);
           }
 
         }
 
         function pick2(categoryArr, biggestCategory) {
-          currentCard.innerHTML = "PICK 2 CARDS";
+          currentCard.innerHTML = "Choose 2 qualities.";
           var twoCards = [];
           list.innerHTML = "";
           categoryArr.map(i => {
@@ -145,24 +145,25 @@ function start() {
             `;
           });
 
-          let pick2Arr = document.getElementsByTagName("img");
+          let pick2Arr = document.getElementsByTagName("li");
           for (let card of pick2Arr) {
             card.addEventListener('click', function(e) {
               if (twoCards.length === 2) {
                 card.removeEventListener('click', function(){});
                 pick1(compareCategories[2], biggestCategory);
               }
-              choose2Cards(e);
+              choose2Cards(e, card);
             });
           }
 
-          function choose2Cards(e) {
+          function choose2Cards(e, card) {
             twoCards.push(e.target.id);
+            card.parentNode.removeChild(card);
           }
         }
 
         function pick1(categoryArr, biggestCategory) {
-          currentCard.innerHTML = "PICK 1 CARD";
+          currentCard.innerHTML = "Choose a quality.";
           var oneCard = [];
           list.innerHTML = "";
           categoryArr.map(i => {
@@ -173,7 +174,7 @@ function start() {
             `;
           });
 
-          let pick1Arr = document.getElementsByTagName("img");
+          let pick1Arr = document.getElementsByTagName("li");
           for (let card of pick1Arr) {
             card.addEventListener('click', function(e) {
               if (oneCard.length === 1) {
@@ -181,12 +182,13 @@ function start() {
                 compareCategories = [keepTech, keepSoc, keepPol].sort((a, b) => b.length - a.length);
                 end(biggestCategory);
               }
-              choose1Card(e);
+              choose1Card(e, card);
             });
           }
 
-          function choose1Card(e) {
+          function choose1Card(e, card) {
             oneCard.push(e.target.id);
+            card.parentNode.removeChild(card);
           }
         }
 
@@ -194,13 +196,13 @@ function start() {
           list.innerHTML = "";
           switch (biggestCategory[0].category) {
             case 'technical':
-              currentCard.innerHTML = "Technique Freak";
+              currentCard.innerHTML = "<p>Congrats, you are a technical person, you pay attention to detail to make sure everything goes as planned. You want to know the facts and a practical way to do things that make sense. You lead with having a high amount of skill in your preferred field and the knowledge to carry out tasks efficiently.</p>";
               break;
             case 'social':
-              currentCard.innerHTML = 'social butterfly';
+              currentCard.innerHTML = '<p>Congrats, you are a social person, you love interacting with others in order to meet a common goal. You believe that there is power in the people and prefer helping and working with others in order to meet a challenge. You lead with having a large amount of people at your back ready to help you in any endeavor.</p>';
               break;
             case 'political':
-              currentCard.innerHTML = 'political playa';
+              currentCard.innerHTML = '<p>Congrats, you are a political person, you love having power and respect from everyone. You are most likely a popular person who has many connections and is very persuasive. You lead through knowing all the right people in the highest places and while persuading others to agree with any opinion you have.</p>';
               break;
             default:
               break;
@@ -218,6 +220,10 @@ resetBtn.addEventListener('click', reset);
 
 function reset() {
   gameOn = false;
+  i = 0;
+  cards = [];
+  currentCard.innerHTML = "";
+  list.innerHTML = "";
   start();
 }
 
