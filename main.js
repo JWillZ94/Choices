@@ -11,10 +11,13 @@ let resetBtn = document.getElementById('reset');
 let gameOn;
 let current;
 let cardsLeft;
-let tech = 0;
-let soc = 0;
-let pol = 0;
-let keep = [];
+let keepTech = [];
+let keepSoc = [];
+let keepPol = [];
+let compareCategories = [keepTech.length, keepSoc.length, keepPol.length];
+let largest;
+let secondLargest;
+let thirdLargest;
 let discard = [];
 
 function start() {
@@ -46,7 +49,22 @@ fetch('cards.json')
 
     shuffle(cards);
 
-    for (var i = 0; i < cards.length; i++) {
+    let i = 0;
+
+    play();
+
+    compareCategories = compareCategories.sort((a, b) => a + b);
+
+    // pick3(compareCategories[0]);
+    //
+    // pick2(compareCategories[1]);
+    //
+    // pick1(compareCategories[2]);
+
+    // end();
+
+    function play() {
+      console.log(i);
       current = cards[i];
       console.log(current);
       card.innerHTML = `
@@ -55,84 +73,64 @@ fetch('cards.json')
 
       keepBtn.addEventListener('click', function() {
         chooseKeep(current);
-        i++;
       });
 
       discardBtn.addEventListener('click', function() {
         chooseDiscard(current);
-        i++;
       });
 
       function chooseKeep(card) {
         switch (card.category) {
           case 'technical':
-            tech++;
+            keepTech.push(card);
             break;
           case 'social':
-            soc++;
+            keepSoc.push(card);
             break;
           case 'political':
-            pol++;
+            keepPol.push(card);
             break;
           default:
             break;
         }
-        keep.push(card);
+        i++;
+        current = cards[i];
+        console.log(current);
       }
 
       function chooseDiscard(card) {
         discard.push(card);
+        i++;
+        // if (index === cardArr.length - 1) {
+        //   // pick3();
+        // } else {
+        //   play(cardArr, index);
+        // }
       }
-
-      // checkCards();
-      //
-      // choose3();
-      //
-      // choose2();
-      //
-      // choose1();
-      //
-      // end();
-
-
 
     }
 
+    // function pick3(categoryArr, index) {
+    //   keepBtn.addEventListener('click', function() {
+    //     chooseKeep(current);
+    //   });
+    //
+    //   discardBtn.addEventListener('click', function() {
+    //     chooseDiscard(current);
+    //   });
+    // }
 
-
-
-    //
-    // function checkCards() {
-    //   if (cards.length > 0) {
-    //     game();
-    //   }
-    // }
-    //
-    // function choose3(category) {
-    //   switch (category) {
-    //     case 'technical':
-    //       play(arr)
-    //   }
-    // }
-    //
-    // function choose2(category) {
-    //
-    // }
-    //
-    // function choose1(category) {
-    //
-    // }
     //
     // function end() {
     //
     // }
     //
-    // resetBtn.onclick(reset);
-    //
-    // function reset() {
-    //   gameOn = false;
-    //   start();
-    // }
+    resetBtn.addEventListener('click', reset);
+
+    function reset() {
+      gameOn = false;
+      start();
+    }
 
   })
   .catch(err => console.error(err));
