@@ -10,6 +10,7 @@ let keepBtn = document.getElementById('keep');
 let discardBtn = document.getElementById('discard');
 let resetBtn = document.getElementById('reset');
 let btnsContainer = document.getElementById('btns-container');
+let directions = document.getElementById('directions');
 let gameOn;
 let current;
 let cardsLeft;
@@ -106,6 +107,7 @@ function start() {
           currentCard.style.height = '40px';
           currentCard.innerHTML = "Choose 3 qualities.";
           btnsContainer.style.display = 'none';
+          directions.style.display = 'none';
           var threeCards = [];
           categoryArr.map(i => {
             list.innerHTML += `
@@ -118,10 +120,6 @@ function start() {
           let pick3Arr = document.getElementsByTagName("li");
           for (let card of pick3Arr) {
             card.addEventListener('click', function(e) {
-              if (threeCards.length === 3) {
-                card.removeEventListener('click', function(){});
-                pick2(compareCategories[1], categoryArr);
-              }
               choose3Cards(e, card);
             });
           }
@@ -129,6 +127,10 @@ function start() {
           function choose3Cards(e, card) {
             threeCards.push(e.target.id);
             card.parentNode.removeChild(card);
+            if (threeCards.length === 3) {
+              card.removeEventListener('click', function(){});
+              pick2(compareCategories[1], categoryArr);
+            }
           }
 
         }
@@ -148,10 +150,6 @@ function start() {
           let pick2Arr = document.getElementsByTagName("li");
           for (let card of pick2Arr) {
             card.addEventListener('click', function(e) {
-              if (twoCards.length === 2) {
-                card.removeEventListener('click', function(){});
-                pick1(compareCategories[2], biggestCategory);
-              }
               choose2Cards(e, card);
             });
           }
@@ -159,6 +157,10 @@ function start() {
           function choose2Cards(e, card) {
             twoCards.push(e.target.id);
             card.parentNode.removeChild(card);
+            if (twoCards.length === 2) {
+              card.removeEventListener('click', function(){});
+              pick1(compareCategories[2], biggestCategory);
+            }
           }
         }
 
@@ -177,11 +179,6 @@ function start() {
           let pick1Arr = document.getElementsByTagName("li");
           for (let card of pick1Arr) {
             card.addEventListener('click', function(e) {
-              if (oneCard.length === 1) {
-                card.removeEventListener('click', function(){});
-                compareCategories = [keepTech, keepSoc, keepPol].sort((a, b) => b.length - a.length);
-                end(biggestCategory);
-              }
               choose1Card(e, card);
             });
           }
@@ -189,6 +186,11 @@ function start() {
           function choose1Card(e, card) {
             oneCard.push(e.target.id);
             card.parentNode.removeChild(card);
+            if (oneCard.length === 1) {
+              card.removeEventListener('click', function(){});
+              compareCategories = [keepTech, keepSoc, keepPol].sort((a, b) => b.length - a.length);
+              end(biggestCategory);
+            }
           }
         }
 
@@ -219,12 +221,7 @@ function start() {
 resetBtn.addEventListener('click', reset);
 
 function reset() {
-  gameOn = false;
-  i = 0;
-  cards = [];
-  currentCard.innerHTML = "";
-  list.innerHTML = "";
-  start();
+  location.reload();
 }
 
 function shuffle(arr) {
